@@ -1,0 +1,37 @@
+script.
+  var addOption = function() {
+    if ($("#newChoice").val() === "") { // TODO: change this to actually use bootstrap things
+      alert("Enter the name");
+      return;
+    }
+    
+    var useID = 0;
+    
+    if ($("#choices").children().length > 0) {
+      console.log("found");
+      useID = +$("#choices").children()[$("#choices").children().length - 1].id + 1;
+    } else {
+      console.log("not found");
+      useID = 1;  
+    }
+    // TODO: fix this as well
+    $("#choices").append("<li id=" + useID + " class='list-group-item'>" + $("#newChoice").val() + "<button type='button' class='close' aria-label='close'><span class='text-danger' aria-hidden='true'>&times;</span></button></li>");
+    $("#newChoice").val("");
+    $("#newChoice").focus();
+  }
+
+.form-group
+  label(for="question") Question:
+  input#question.form-control(type="text" placeholder="Enter your question here.")
+.form-group
+  label(for="choices") Options:
+  ul#choices.list-group
+    each item in options
+      li.list-group-item(id="" + item.id) #{item.text}
+  br
+  .input-group
+    input#newChoice.form-control(type="text" placeholder="Enter a new option here.")
+    span.input-group-btn
+      button#addChoice.btn.btn-success(type="button" onclick="addOption()")
+        span.octicon.octicon-plus
+        
