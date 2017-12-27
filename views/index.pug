@@ -1,0 +1,19 @@
+doctype html
+html
+  include includes/head.pug
+  body
+    
+    include includes/mainNav.pug
+    #container
+      if user
+        include components/indexBody.pug
+
+      if showAccount
+        include components/account.pug
+
+      if showLogin
+        include components/login.pug
+    
+    include includes/footer.pug
+    
+    include includes/scripts.pug
