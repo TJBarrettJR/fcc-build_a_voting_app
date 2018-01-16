@@ -5,9 +5,27 @@ Login and users add and updates is up.
 Added basics of polls and pages
 
 
-Will use pug, bootstrap, mongoDB, and either chart.js or d3.js for final product
+Will use angular, bootstrap, mongoDB, and either chart.js or d3.js for final product
 
 TODO:
+
+using [this](https://angular.io/tutorial/toh-pt4#inject-the-heroservice) to get basics of angular
+
+* Focus on converting everything from pug to angular
+  * Adjust angular routes and urls for what is already built
+  * May need to run "tsc -p public/ --listEmittedFiles" when adding new components
+  * pug to convert
+    * polls
+    * vote
+    * account
+    * editPoll
+    * indexBody -- Need to figure out the default view
+    * login
+    * newPoll
+    * poll
+    * pollComments
+    * pollForm
+    * pollResults
 * Finish poll-form for new poll and edit poll
 * Finish new poll setup and send
 * Finish edit poll setup and send

@@ -1,0 +1,4 @@
+.input-group .invalid-feedback {
+  position: absolute;
+  top: 2.5em;
+}

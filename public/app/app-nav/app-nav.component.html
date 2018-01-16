@@ -1,0 +1,64 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">Voing App</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div id="navbarSupportedContent" class="collapse navbar-collapse">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Home<span class="sr-only" current></span></a>
+      </li>
+      <li *ngIf="user" class="nav-item">
+        <a class="nav-link" href="/new">New Poll</a>
+      </li>
+      <li>
+        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Recent Polls</a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="#">Poll 1</a>
+          <a class="dropdown-item" href="#">Poll 2</a>
+          <a class="dropdown-item" href="#">Poll 3</a>
+          <a class="dropdown-item" href="#">Poll 4</a>
+          <a class="dropdown-item" href="#">Poll 5</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">More Polls</a>
+        </div>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0 mr-4">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+    <div *ngIf="user">
+      <div class="dropdown navbar-nav keep-inline">
+        <span class="navbar-text mr-2">Hello {{user.displayName}}</span>
+        <a id="navbarDropdownSettings" class="nav-link dropdown-toggle mr-3" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <span class="octicon octicon-gear light"></span>
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="#">Account Info</a>
+          <a class="dropdown-item" href="#">My Polls</a>
+          <a class="dropdown-item" href="#">My Votes</a>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="!user">
+      <a class="btn btn-outline-primary nav-link" href="#">Login</a>
+    </div>
+  </div>
+</nav>
+
+<!-- 
+
+    if user
+      span.navbar-text.mr-2 Hello #{user.displayName}
+      .dropdown.navbar-nav
+        a#navbarDropdownSettings.nav-link.dropdown-toggle.mr-3(href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false")
+          span.octicon.octicon-gear.light
+        .dropdown-menu(aria-labelledby="navbarDropdown")
+          a.dropdown-item(href="/account") Account Info
+          a.dropdown-item(href="#") My Polls
+          a.dropdown-item(href="#") My Votes
+      a.btn.btn-outline-danger(href="/logout") Logout
+    else
+      a.btn.btn-outline-primary.nav-link(href="/login") Login
+-->

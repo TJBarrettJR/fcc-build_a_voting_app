@@ -1,0 +1,7 @@
+.light {
+  color: #fff;
+}
+
+.navbar-nav.keep-inline {
+  flex-direction: row;
+}
