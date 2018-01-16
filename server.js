@@ -6,7 +6,8 @@ var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
 var GitHubStrategy = require('passport-github2').Strategy;
 var partials = require('express-partials');
-var mongoClient = require('mongodb').MongoClient;
+var mongoose = require('mongoose');
+var morgan = require('morgan');
 
 var app = express();
 
@@ -34,9 +35,8 @@ passport.use(new GitHubStrategy({
 ));
 
 // configure Express | TODO: Learn some of these and read more into what I actually need
-app.set('views', __dirname + '/views');
-app.set('view engine', 'pug');
 app.use(partials()); // TODO: Whats this do?!
+app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({ extended: true })); // TODO: Read this documentation
 app.use(bodyParser.json()); // TODO: Read this documentation
 app.use(methodOverride()); // TODO: Understand this documentation
@@ -44,8 +44,11 @@ app.use(session({ secret: 'keyboard cat', resave: false, saveUninitialized: fals
 app.use(passport.initialize()); // TODO: Read Documentation
 app.use(passport.session()); // TODO: Read Documentation
 app.use(express.static(__dirname + '/public')); // TODO: Understand this
+app.use('/node_modules', express.static(__dirname + '/node_modules'));
 
-mongoClient.connect(process.env.MONGO_CONNECTION, function(err, myDB) {
+mongoose.connect(process.env.MONGO_CONNECTION, {useMongoClient: true});
+
+/*mongoClient.connect(process.env.MONGO_CONNECTION, function(err, myDB) {
   if (err) {
     throw err;
   } else {
@@ -126,7 +129,9 @@ mongoClient.connect(process.env.MONGO_CONNECTION, function(err, myDB) {
       res.redirect('/');
     });
   }
-});
+});*/
+ 
+require('./api/routes/main.route.js')(app);
 
 function ensureAuthenticated(req, res, next) {
   if (req.isAuthenticated()) { return next(); }
