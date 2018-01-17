@@ -21,7 +21,6 @@ using [this](https://angular.io/tutorial/toh-pt4#inject-the-heroservice) to get 
   * pug to convert
     * polls
     * vote
-    * account
     * editPoll
     * indexBody -- Need to figure out the default view
     * login
