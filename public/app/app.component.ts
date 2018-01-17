@@ -7,16 +7,16 @@ import { UserService } from './user.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent  { 
+export class AppComponent implements OnInit { 
   user: User;
   
   constructor(private userService: UserService) { }
   
   getUser(): void {
-    this.userService.getUser().subscribe(user => this.user = user);
+    this.userService.signIn().subscribe(user => this.user = user);
   }
   
-  ngOnInit() {
+  ngOnInit(): void {
     this.getUser();
   }
 }

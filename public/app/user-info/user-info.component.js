@@ -10,23 +10,24 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
-var user_1 = require("../user");
+var user_service_1 = require("../user.service");
 var UserInfo = /** @class */ (function () {
-    function UserInfo() {
+    function UserInfo(userService) {
+        this.userService = userService;
     }
-    UserInfo.prototype.ngOnInit = function () {
+    UserInfo.prototype.getUser = function () {
+        this.user = this.userService.getUser();
     };
-    __decorate([
-        core_1.Input(),
-        __metadata("design:type", user_1.User)
-    ], UserInfo.prototype, "user", void 0);
+    UserInfo.prototype.ngOnInit = function () {
+        this.getUser();
+    };
     UserInfo = __decorate([
         core_1.Component({
             selector: 'user-info',
             templateUrl: './user-info.component.html',
             styleUrls: ['./user-info.component.css']
         }),
-        __metadata("design:paramtypes", [])
+        __metadata("design:paramtypes", [user_service_1.UserService])
     ], UserInfo);
     return UserInfo;
 }());

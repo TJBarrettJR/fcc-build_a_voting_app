@@ -17,7 +17,7 @@ var AppComponent = /** @class */ (function () {
     }
     AppComponent.prototype.getUser = function () {
         var _this = this;
-        this.userService.getUser().subscribe(function (user) { return _this.user = user; });
+        this.userService.signIn().subscribe(function (user) { return _this.user = user; });
     };
     AppComponent.prototype.ngOnInit = function () {
         this.getUser();

@@ -9,7 +9,18 @@ import { USER } from './mock-user';
 export class UserService {
   constructor() { }
   
-  getUser(): Observable<User> {
+  user: User; 
+  
+  checkIfLogged(): boolean {
+    return this.user ? true : false ;
+  }
+  
+  getUser(): User {
+    return this.user;
+  }
+  
+  signIn(): Observable<User> {
+    this.user = USER;
     return of(USER);
   }
 }

@@ -15,7 +15,14 @@ var mock_user_1 = require("./mock-user");
 var UserService = /** @class */ (function () {
     function UserService() {
     }
+    UserService.prototype.checkIfLogged = function () {
+        return this.user ? true : false;
+    };
     UserService.prototype.getUser = function () {
+        return this.user;
+    };
+    UserService.prototype.signIn = function () {
+        this.user = mock_user_1.USER;
         return of_1.of(mock_user_1.USER);
     };
     UserService = __decorate([
