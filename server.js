@@ -8,11 +8,13 @@ var GitHubStrategy = require('passport-github2').Strategy;
 var partials = require('express-partials');
 var mongoose = require('mongoose');
 var morgan = require('morgan');
-
+ 
 var app = express();
 
 var GITHUB_CLIENT_ID = process.env.GITHUB_CLIENT_ID;
 var GITHUB_CLIENT_SECRET = process.env.GITHUB_CLIENT_SECRET;
+var GITHUB_CALLBACK = process.env.GITHUB_CALLBACK + "/auth/github/callback";
+console.log(GITHUB_CALLBACK);
 
 passport.serializeUser(function(user, done) { // TODO: Read about this
   done(null, user);
@@ -25,7 +27,7 @@ passport.deserializeUser(function(obj, done) {
 passport.use(new GitHubStrategy({
   clientID: GITHUB_CLIENT_ID,
   clientSecret: GITHUB_CLIENT_SECRET,
-  callbackURL: "https://receptive-sprout.glitch.me/auth/github/callback"
+  callbackURL: GITHUB_CALLBACK
   }, 
   function(accessToken, refreshToken, profile, done) {
     process.nextTick(function() {
@@ -136,7 +138,7 @@ require('./api/routes/main.route.js')(app);
 function ensureAuthenticated(req, res, next) {
   if (req.isAuthenticated()) { return next(); }
   res.redirect('/login');
-};
+}
 
 // keep this
 var listener = app.listen(process.env.PORT, function () {
