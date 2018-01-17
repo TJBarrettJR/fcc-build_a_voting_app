@@ -4,6 +4,10 @@ FCC-Build a Voting App
 Login and users add and updates is up.
 Added basics of polls and pages
 
+To run from codeanywhere use "nf run npm start"
+--------------------------
+Uses [node-forman](https://github.com/strongloop/node-foreman) to follow [this](https://support.glitch.com/t/what-changes-do-i-need-to-make-to-my-project-to-host-on-my-own-machine/1382/2) guide from glitch
+
 
 Will use angular, bootstrap, mongoDB, and either chart.js or d3.js for final product
 
