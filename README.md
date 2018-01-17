@@ -46,3 +46,4 @@ using [this](https://angular.io/tutorial/toh-pt4#inject-the-heroservice) to get 
 * Refactor everything to not be in a single server.js file
 * Need to review the OAuth2 stuff to understand what it is doing
 * Find other things that need to be done
+* Review [forever](https://www.npmjs.com/package/forever) if I ever want to have the server stay up on codeanywhere

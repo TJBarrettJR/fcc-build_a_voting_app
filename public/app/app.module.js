@@ -11,17 +11,25 @@ var platform_browser_1 = require("@angular/platform-browser");
 var app_component_1 = require("./app.component");
 var app_nav_component_1 = require("./app-nav/app-nav.component");
 var app_footer_component_1 = require("./app-footer/app-footer.component");
+var user_info_component_1 = require("./user-info/user-info.component");
+var dashboard_component_1 = require("./dashboard/dashboard.component");
 var user_service_1 = require("./user.service");
+var app_routing_module_1 = require("./app-routing.module");
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
     AppModule = __decorate([
         core_1.NgModule({
-            imports: [platform_browser_1.BrowserModule],
+            imports: [
+                platform_browser_1.BrowserModule,
+                app_routing_module_1.AppRoutingModule
+            ],
             declarations: [
                 app_component_1.AppComponent,
                 app_nav_component_1.AppNav,
-                app_footer_component_1.AppFooter
+                app_footer_component_1.AppFooter,
+                user_info_component_1.UserInfo,
+                dashboard_component_1.Dashboard
             ],
             providers: [user_service_1.UserService],
             bootstrap: [app_component_1.AppComponent]
