@@ -14,8 +14,7 @@
     "ignore": [
       "views/",
       "public/"
-    ],
-    "delay": "20000"
+    ]
   },
   "dependencies": {
     "@angular/common": "^5.2.0",

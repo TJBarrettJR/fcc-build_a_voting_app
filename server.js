@@ -14,7 +14,6 @@ var app = express();
 var GITHUB_CLIENT_ID = process.env.GITHUB_CLIENT_ID;
 var GITHUB_CLIENT_SECRET = process.env.GITHUB_CLIENT_SECRET;
 var GITHUB_CALLBACK = process.env.GITHUB_CALLBACK + "/auth/github/callback";
-console.log(GITHUB_CALLBACK);
 
 passport.serializeUser(function(user, done) { // TODO: Read about this
   done(null, user);
