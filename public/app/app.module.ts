@@ -6,6 +6,7 @@ import { AppNav } from './app-nav/app-nav.component';
 import { AppFooter } from './app-footer/app-footer.component';
 import { UserInfo } from './user-info/user-info.component';
 import { Dashboard } from './dashboard/dashboard.component';
+import { PollForm } from './poll-form/poll-form.component';
 
 import { UserService } from './user.service';
 
@@ -21,7 +22,8 @@ import { AppRoutingModule } from './app-routing.module';
     AppNav,
     AppFooter,
     UserInfo,
-    Dashboard
+    Dashboard,
+    PollForm
   ],
   providers: [ UserService ],
   bootstrap:    [ AppComponent ]

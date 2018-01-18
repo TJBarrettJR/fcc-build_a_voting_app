@@ -10,9 +10,11 @@ var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
 var dashboard_component_1 = require("./dashboard/dashboard.component");
 var user_info_component_1 = require("./user-info/user-info.component");
+var poll_form_component_1 = require("./poll-form/poll-form.component");
 var routes = [
     { path: '', component: dashboard_component_1.Dashboard },
-    { path: 'Account', component: user_info_component_1.UserInfo },
+    { path: 'account', component: user_info_component_1.UserInfo },
+    { path: 'pollform/:id', component: poll_form_component_1.PollForm },
     { path: '**', redirectTo: '', pathMatch: 'full' }
 ];
 var AppRoutingModule = /** @class */ (function () {

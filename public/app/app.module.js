@@ -13,6 +13,7 @@ var app_nav_component_1 = require("./app-nav/app-nav.component");
 var app_footer_component_1 = require("./app-footer/app-footer.component");
 var user_info_component_1 = require("./user-info/user-info.component");
 var dashboard_component_1 = require("./dashboard/dashboard.component");
+var poll_form_component_1 = require("./poll-form/poll-form.component");
 var user_service_1 = require("./user.service");
 var app_routing_module_1 = require("./app-routing.module");
 var AppModule = /** @class */ (function () {
@@ -29,7 +30,8 @@ var AppModule = /** @class */ (function () {
                 app_nav_component_1.AppNav,
                 app_footer_component_1.AppFooter,
                 user_info_component_1.UserInfo,
-                dashboard_component_1.Dashboard
+                dashboard_component_1.Dashboard,
+                poll_form_component_1.PollForm
             ],
             providers: [user_service_1.UserService],
             bootstrap: [app_component_1.AppComponent]

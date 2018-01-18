@@ -3,10 +3,12 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { Dashboard } from './dashboard/dashboard.component';
 import { UserInfo } from './user-info/user-info.component';
+import { PollForm } from './poll-form/poll-form.component';
 
 const routes: Routes = [
   { path: '', component: Dashboard },
-  { path: 'Account', component: UserInfo },
+  { path: 'account', component: UserInfo },
+  { path: 'pollform/:id', component: PollForm },
   { path: '**', redirectTo: '', pathMatch: 'full' }
 ]
 

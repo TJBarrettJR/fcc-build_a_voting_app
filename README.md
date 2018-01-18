@@ -21,15 +21,16 @@ using [this](https://angular.io/tutorial/toh-pt4#inject-the-heroservice) to get 
   * pug to convert
     * polls
     * vote
-    * editPoll
     * indexBody -- Need to figure out the default view
     * login
-    * newPoll
     * poll
     * pollComments
-    * pollForm
+    * pollForm  --- Working on this right now!! get to a place where I can move over to the polls component
+      * editPoll
+      * newPoll
     * pollResults
 * Finish poll-form for new poll and edit poll
+* On app-nav make changes to navbarDropdown indicated in comments
 * Finish new poll setup and send
 * Finish edit poll setup and send
   * Decide if edit resets all answers
@@ -42,6 +43,7 @@ using [this](https://angular.io/tutorial/toh-pt4#inject-the-heroservice) to get 
     * Will require changes to the login process
 * Ability to see and manage your polls
 * Ability to search polls
+* Redo server routing to support manually entered URLs and refresh
 * Refactor everything to not be in a single server.js file
 * Need to review the OAuth2 stuff to understand what it is doing
 * Find other things that need to be done

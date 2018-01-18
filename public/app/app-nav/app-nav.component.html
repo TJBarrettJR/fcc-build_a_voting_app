@@ -1,20 +1,20 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" routerLink="/dashboard">Voing App</a>
+  <a class="navbar-brand" routerLink="">Voing App</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div id="navbarSupportedContent" class="collapse navbar-collapse">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" routerLink="/dashboard">Home<span class="sr-only" current></span></a>
+        <a class="nav-link" routerLink="">Home<span class="sr-only" current></span></a>
       </li>
       <li *ngIf="user" class="nav-item">
-        <a class="nav-link" href="#">New Poll</a>
+        <a class="nav-link" routerLink="/pollform/new">New Poll</a>
       </li>
       <li>
         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Recent Polls</a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Poll 1</a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown"> <!-- Change this to *ngFor once I get polls built -->
+          <a class="dropdown-item" href="#">Poll 1</a> 
           <a class="dropdown-item" href="#">Poll 2</a>
           <a class="dropdown-item" href="#">Poll 3</a>
           <a class="dropdown-item" href="#">Poll 4</a>
