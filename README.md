@@ -25,12 +25,14 @@ using [this](https://angular.io/tutorial/toh-pt4#inject-the-heroservice) to get 
     * login
     * poll
     * pollComments
-    * pollForm  --- Working on this right now!! get to a place where I can move over to the polls component
+    * pollForm  --- Come back to this once the poll voting is converted
       * editPoll
-      * newPoll
+      * newPoll   ----------------------- Working on building the base html from pug
     * pollResults
 * Finish poll-form for new poll and edit poll
+  * reset vote counts when saving changes to a poll
 * On app-nav make changes to navbarDropdown indicated in comments
+* On app-nav change active area based upon routing (Stays on Home currently)
 * Finish new poll setup and send
 * Finish edit poll setup and send
   * Decide if edit resets all answers

@@ -1,1 +1,40 @@
-<h1>Poll Form!</h1>
+<div class="jumbotron">
+  <h1 *ngIf='newPoll'>Create a new poll!</h1>
+  <h1 *ngIf='!newPoll'>Edit poll</h1>
+</div>
+<div class="container">
+  <form class="form">
+    <div class="form-group">
+      <label for="question">Question: </label>
+      <input id="question" class="form-control" type="text" [(ngModel)]="poll.question" name="question" placeholder="Enter your questions here.">
+      <div class="invalid-feedback">Please provide a question for the poll.</div>
+      <br>
+      <div class="form-group">
+        <label for="options">Options: </label>
+        <div id="need-more-options" class="invalid-feedback">Please enter two or more options.</div>
+        <ul id="choices" class="list-group" *ngIf='poll.options'>
+          <li *ngFor="let option of poll.options; let i=index" class="list-group-item" id="{{i}}">{{option.text}}
+            <button type="button" class="close float-right ml-4" aria-label="remove" (click)="removeOption(i)">
+              <span aira-hidden="true" class="text-danger">&times;</span>
+            </button>
+            <span *ngIf="!newPoll" class="badge badge-pill badge-info float-right">Votes: {{option.voteCount}}</span>
+          </li>
+        </ul>
+      </div>
+      <br>
+      <div class="form-group">
+        <div class="input-group">
+          <input id="newOption" #newOptionText class="form-control" type="text" placeholder="Enter a new option here.">
+          <div class="input-group-append">
+            <button id="addOption" class="btn btn-success" type="button" (click)="addOption(newOptionText.value); newOptionText.value=''">
+              <span class="octicon octicon-plus"></span>
+            </button>
+          </div>
+          <div class="invalid-feedback">Please provide a valid option.</div>
+        </div>
+      </div>
+    </div>
+    <button class="btn btn-primary float-right mt-3 mr-3" type="button">Save</button>
+    <button *ngIf="!newPoll" class="btn btn-danger float-right mt-3 mr-3" (click)="revertBeforeChanges()" type="button">Revert</button>
+  </form>
+</div>
