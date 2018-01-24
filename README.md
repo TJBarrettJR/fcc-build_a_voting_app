@@ -7,7 +7,17 @@ Added basics of polls and pages
 To run from codeanywhere use "nf run npm start"
 --------------------------
 Uses [node-forman](https://github.com/strongloop/node-foreman) to follow [this](https://support.glitch.com/t/what-changes-do-i-need-to-make-to-my-project-to-host-on-my-own-machine/1382/2) guide from glitch
+Use npm install -g foreman
 
+To run on windows
+-----------------
+These must be installed globally
+* concurrently
+* foreman
+* nodemon
+* typescript
+* npm-windows-upgrade
+  * Not sure this is actually needed | Will test
 
 Will use angular, bootstrap, mongoDB, and either chart.js or d3.js for final product
 
@@ -15,6 +25,7 @@ TODO:
 
 using [this](https://angular.io/tutorial/toh-pt4#inject-the-heroservice) to get basics of angular
 
+* Lookup and use .gitignore !!!!!!!!!!!!!!!!!
 * Focus on converting everything from pug to angular
   * Adjust angular routes and urls for what is already built
   * May need to run "tsc -p public/ --listEmittedFiles" when adding new components
@@ -33,6 +44,9 @@ using [this](https://angular.io/tutorial/toh-pt4#inject-the-heroservice) to get 
   * reset vote counts when saving changes to a poll
 * On app-nav make changes to navbarDropdown indicated in comments
 * On app-nav change active area based upon routing (Stays on Home currently)
+* Fix OAuth2 stuff once pug is converted
+  * Learn more about angular and OAuth
+  * Find out how to still 'connect' when testing offline on localhost
 * Finish new poll setup and send
 * Finish edit poll setup and send
   * Decide if edit resets all answers
