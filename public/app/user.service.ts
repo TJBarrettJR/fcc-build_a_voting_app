@@ -21,7 +21,13 @@ export class UserService {
   }
   
   getOtherUser(id: number): Observable<User> {
-    return of(OTHER_USER);
+    if (id === 1) {
+      return of(USER);
+    } else if(id === 2) {
+      return of(OTHER_USER);
+    } else {
+      return;
+    }
   }
   
   signIn(): Observable<User> {

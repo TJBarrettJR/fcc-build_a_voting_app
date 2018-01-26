@@ -12,9 +12,11 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
 var user_service_1 = require("../user.service");
+var poll_service_1 = require("../poll.service");
 var PollForm = /** @class */ (function () {
-    function PollForm(userService, route) {
+    function PollForm(userService, pollService, route) {
         this.userService = userService;
+        this.pollService = pollService;
         this.route = route;
         this.nextOption = 0;
     }
@@ -22,19 +24,21 @@ var PollForm = /** @class */ (function () {
         this.user = this.userService.getUser();
     };
     PollForm.prototype.getPoll = function () {
+        var _this = this;
         if (this.route.snapshot.paramMap.get('id') == 'new') {
             this.newPoll = true;
-            this.poll = { id: -1, question: "", options: [], open: false };
+            this.poll = { id: -1, userId: 2, question: "", options: [], open: false };
             document.getElementById('save-submit').innerText = 'Submit';
             // anything else to setup the poll new should go here
         }
         else {
             this.newPoll = false;
             // TODO: this needs to have a poll service to get the poll information requested and a redirect if not found
-            this.poll = { id: 1, question: "Is this a question?", options: [{ id: 0, text: "Yes", voteCount: 100 }, { id: 1, text: "No", voteCount: 50 }, { id: 2, text: "??", voteCount: 1000 }], open: false };
-            this.editResetPoll = JSON.parse(JSON.stringify(this.poll));
-            this.nextOption = this.poll.options.length;
-            // TODO: once poll component and object is built, build this out
+            this.pollService.getPoll(1).subscribe(function (poll) {
+                _this.poll = poll;
+                _this.editResetPoll = JSON.parse(JSON.stringify(_this.poll));
+                _this.nextOption = _this.poll.options.length;
+            });
         }
     };
     PollForm.prototype.addOption = function (value) {
@@ -97,6 +101,7 @@ var PollForm = /** @class */ (function () {
             styleUrls: ['./poll-form.component.css']
         }),
         __metadata("design:paramtypes", [user_service_1.UserService,
+            poll_service_1.PollService,
             router_1.ActivatedRoute])
     ], PollForm);
     return PollForm;

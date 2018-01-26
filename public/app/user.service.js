@@ -23,7 +23,15 @@ var UserService = /** @class */ (function () {
         return this.user;
     };
     UserService.prototype.getOtherUser = function (id) {
-        return of_1.of(mock_other_user_1.OTHER_USER);
+        if (id === 1) {
+            return of_1.of(mock_user_1.USER);
+        }
+        else if (id === 2) {
+            return of_1.of(mock_other_user_1.OTHER_USER);
+        }
+        else {
+            return;
+        }
     };
     UserService.prototype.signIn = function () {
         this.user = mock_user_1.USER;

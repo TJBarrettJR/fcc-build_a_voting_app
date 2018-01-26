@@ -5,6 +5,7 @@ import { Poll } from '../poll';
 import { Option } from '../option';
 
 import { UserService } from '../user.service';
+import { PollService } from '../poll.service';
 
 @Component({
   selector: 'poll-form',
@@ -24,6 +25,7 @@ export class PollForm implements OnInit {
   
   constructor(
     private userService: UserService,
+    private pollService: PollService,
     private route: ActivatedRoute
   ) { }
   
@@ -34,16 +36,17 @@ export class PollForm implements OnInit {
   getPoll(): void {
     if (this.route.snapshot.paramMap.get('id') == 'new') {
       this.newPoll = true;
-      this.poll = {id: -1, question: "", options: [], open: false};
+      this.poll = {id: -1, userId: 2, question: "", options: [], open: false};
       document.getElementById('save-submit').innerText = 'Submit';
       // anything else to setup the poll new should go here
     } else {
       this.newPoll = false;
       // TODO: this needs to have a poll service to get the poll information requested and a redirect if not found
-      this.poll = {id: 1, question: "Is this a question?", options: [{ id: 0, text: "Yes", voteCount: 100 }, { id: 1, text: "No", voteCount: 50 }, { id: 2, text: "??", voteCount: 1000 }], open: false };
-      this.editResetPoll = JSON.parse(JSON.stringify(this.poll));
-      this.nextOption = this.poll.options.length;
-      // TODO: once poll component and object is built, build this out
+      this.pollService.getPoll(1).subscribe(poll => {
+        this.poll = poll;
+        this.editResetPoll = JSON.parse(JSON.stringify(this.poll));
+        this.nextOption = this.poll.options.length;
+      });
     }
   }
   

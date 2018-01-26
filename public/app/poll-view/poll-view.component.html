@@ -1,1 +1,19 @@
-{{user.id}}
+<div class="jumbotron">
+  <h1>{{ poll.question }}</h1>
+  <h4 class="ml-3">by {{ author.displayName }}</h4>
+</div>
+<div class="row">
+  <div class="col-sm">
+    <div class="container ml-3">
+      <h2 *ngIf="voting">Select a response!</h2>
+      <h2 *ngIf="!voting">Results:</h2>
+    </div>
+  </div>
+  <div class="col-sm">
+    <div class="container">
+      <ul class="list-group">
+        
+      </ul>
+    </div>
+  </div>
+</div>
