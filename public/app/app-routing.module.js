@@ -11,10 +11,12 @@ var router_1 = require("@angular/router");
 var dashboard_component_1 = require("./dashboard/dashboard.component");
 var user_info_component_1 = require("./user-info/user-info.component");
 var poll_form_component_1 = require("./poll-form/poll-form.component");
+var poll_view_component_1 = require("./poll-view/poll-view.component");
 var routes = [
     { path: '', component: dashboard_component_1.Dashboard },
     { path: 'account', component: user_info_component_1.UserInfo },
     { path: 'pollform/:id', component: poll_form_component_1.PollForm },
+    { path: 'poll/:id', component: poll_view_component_1.PollView },
     { path: '**', redirectTo: '', pathMatch: 'full' }
 ];
 var AppRoutingModule = /** @class */ (function () {

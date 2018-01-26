@@ -30,22 +30,68 @@ using [this](https://angular.io/tutorial/toh-pt4#inject-the-heroservice) to get 
   * Adjust angular routes and urls for what is already built
   * May need to run "tsc -p public/ --listEmittedFiles" when adding new components
   * pug to convert
-    * polls
-    * vote
     * indexBody -- Need to figure out the default view
+      * polls - bootstrap cards
+        * check if user created is current user and add an edit button if so
+        * this will also go to the MyPolls and MyVotes pages
     * login
     * poll
-    * pollComments
-    * pollForm  --- Come back to this once the poll voting is converted
-      * editPoll
-      * newPoll   ----------------------- Working on building the base html from pug
-    * pollResults
+      * pollComments
+      * pollResults
+      * vote
+* Finish poll-service
+  * BIG TODO: should vote have its own service?
+    * Front end data can be used as is for the poll but need to create a vote object as well
+    * Back end would need to split vote and poll data
+      * How does that affect performance for MONGO vs having all voting data kept in an array
+        * think about votes by user and votes by poll differences
+        * do front end models need to match back end?
+        * create a chart for this of the two mappings
+  * check user credentials for add/delete/edit of polls/votes
+  * add vote
+  * edit vote
+  * delete vote
+  * add poll
+  * edit poll
+  * delete poll
+    * decide between delete, deactivate, and archive?
+      * delete - never get back
+      * deactivate - still shows and searchable to anyone but no voting
+      * archive - not shown or searchable to even the owner
+        * would need to build the ability to find this for the owner and unarchive
+        * decide how voting works with this
+          * can users still 'see' that they voted but nothing else?   
+      * maybe let user decide
+  * Public/Private/secured poll
+    * public - anyone can see/search/vote
+    * private - anyone can see/vote but can not search or find it naturally
+      * owner would need to provide url and it can be shared at will of anyone
+    * secured - owner needs to create a 'phrase' for individuals to unlock (Group phrase)
+      * can only find with owner provided url
+      * users can only view poll information or vote by entering phrase
+      * owner can change phrase with options to reset votes or keep votes
+        * with reset votes users that previously entered the phrase will need the new one
+        * with keep votes users that previously had the phrase entered can change vote and view info
+          * new phrase is not exposed to those already registered
+          * users not yet registered will need the new phrase
 * Finish poll-form for new poll and edit poll
   * reset vote counts when saving changes to a poll
 * On app-nav make changes to navbarDropdown indicated in comments
 * On app-nav change active area based upon routing (Stays on Home currently)
+* Fix user-info
+  * This should be a sub-page (routing?) of an overall settings page
+    * Looking at a bootstrap nav in a tab style with the content under that
+  * Options (adjust main nav as well for these)
+    * Account Info (user-info)
+      * Add logout to this and main nav
+    * My Polls
+    * My Votes
 * Adjust where JS file outputs go and may need to add html into that folder
   * Can add to .gitignore once completed to reduce upload/download size
+* Restructure project
+  * have models, mocks, and services folders
+  * Should sub-components be inside of the component folder?
+  * Do more research on Angular project structure
 * Fix OAuth2 stuff once pug is converted
   * Maybe change how it works and allow the user to select their own values??
   * Learn more about angular and OAuth

@@ -11,29 +11,31 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var of_1 = require("rxjs/observable/of");
-var mock_user_1 = require("./mock-user");
-var mock_other_user_1 = require("./mock-other-user");
-var UserService = /** @class */ (function () {
-    function UserService() {
+var mock_vote_1 = require("./mock-vote");
+var VoteService = /** @class */ (function () {
+    function VoteService() {
     }
-    UserService.prototype.checkIfLogged = function () {
-        return this.user ? true : false;
+    VoteService.prototype.getVote = function (id) {
+        if (id === void 0) { id = 1; }
+        if (id !== 1) {
+            return; // TODO: this is if the item is not found
+        }
+        return of_1.of(mock_vote_1.VOTE); // TODO: fix this to actually check
     };
-    UserService.prototype.getUser = function () {
-        return this.user;
+    VoteService.prototype.addVote = function () {
+        // TODO: create this logic
     };
-    UserService.prototype.getOtherUser = function (id) {
-        return of_1.of(mock_other_user_1.OTHER_USER);
+    VoteService.prototype.editVote = function () {
+        // TODO: create this logic
     };
-    UserService.prototype.signIn = function () {
-        this.user = mock_user_1.USER;
-        return of_1.of(mock_user_1.USER);
+    VoteService.prototype.deleteVote = function () {
+        // TODO: create this logic
     };
-    UserService = __decorate([
+    VoteService = __decorate([
         core_1.Injectable(),
         __metadata("design:paramtypes", [])
-    ], UserService);
-    return UserService;
+    ], VoteService);
+    return VoteService;
 }());
-exports.UserService = UserService;
-//# sourceMappingURL=user.service.js.map
+exports.VoteService = VoteService;
+//# sourceMappingURL=vote.service.js.map

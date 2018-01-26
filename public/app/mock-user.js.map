@@ -1,1 +1,1 @@
-{"version":3,"file":"mock-user.js","sourceRoot":"","sources":["mock-user.ts"],"names":[],"mappings":";;AAEa,QAAA,IAAI,GAAS;IACxB,EAAE,EAAE,QAAQ;IACZ,WAAW,EAAE,iBAAiB;IAC9B,QAAQ,EAAE,aAAa;IACvB,KAAK,EAAE,kBAAkB;IACzB,UAAU,EAAE,uDAAuD;IACnE,UAAU,EAAE,EAAE;CACf,CAAA"}
+{"version":3,"file":"mock-user.js","sourceRoot":"","sources":["mock-user.ts"],"names":[],"mappings":";;AAEa,QAAA,IAAI,GAAS;IACxB,EAAE,EAAE,CAAC;IACL,QAAQ,EAAE,QAAQ;IAClB,WAAW,EAAE,iBAAiB;IAC9B,QAAQ,EAAE,aAAa;IACvB,KAAK,EAAE,kBAAkB;IACzB,UAAU,EAAE,uDAAuD;IACnE,UAAU,EAAE,EAAE;CACf,CAAA"}

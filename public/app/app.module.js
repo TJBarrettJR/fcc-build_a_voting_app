@@ -15,7 +15,10 @@ var app_footer_component_1 = require("./app-footer/app-footer.component");
 var user_info_component_1 = require("./user-info/user-info.component");
 var dashboard_component_1 = require("./dashboard/dashboard.component");
 var poll_form_component_1 = require("./poll-form/poll-form.component");
+var poll_view_component_1 = require("./poll-view/poll-view.component");
 var user_service_1 = require("./user.service");
+var poll_service_1 = require("./poll.service");
+var vote_service_1 = require("./vote.service");
 var app_routing_module_1 = require("./app-routing.module");
 var AppModule = /** @class */ (function () {
     function AppModule() {
@@ -33,9 +36,14 @@ var AppModule = /** @class */ (function () {
                 app_footer_component_1.AppFooter,
                 user_info_component_1.UserInfo,
                 dashboard_component_1.Dashboard,
-                poll_form_component_1.PollForm
+                poll_form_component_1.PollForm,
+                poll_view_component_1.PollView
             ],
-            providers: [user_service_1.UserService],
+            providers: [
+                user_service_1.UserService,
+                poll_service_1.PollService,
+                vote_service_1.VoteService
+            ],
             bootstrap: [app_component_1.AppComponent]
         })
     ], AppModule);

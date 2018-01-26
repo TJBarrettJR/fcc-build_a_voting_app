@@ -8,7 +8,7 @@ import { User } from '../user';
 })
 export class Dashboard implements OnInit {
   
-  @Input() user: User;
+  @Input() user: User; // TODO: need to fix this as it will not be pushed through @Input. Review user-info for details
   
   constructor() { }
   ngOnInit() {

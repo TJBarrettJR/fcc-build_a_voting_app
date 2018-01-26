@@ -11,29 +11,34 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var of_1 = require("rxjs/observable/of");
-var mock_user_1 = require("./mock-user");
-var mock_other_user_1 = require("./mock-other-user");
-var UserService = /** @class */ (function () {
-    function UserService() {
+var mock_poll_1 = require("./mock-poll");
+var PollService = /** @class */ (function () {
+    function PollService() {
     }
-    UserService.prototype.checkIfLogged = function () {
-        return this.user ? true : false;
+    PollService.prototype.checkValidPollId = function (id) {
+        return id === 1 ? true : false; // TODO: fix this to actually check and choose if this is the best way
     };
-    UserService.prototype.getUser = function () {
-        return this.user;
+    PollService.prototype.getPoll = function (id) {
+        if (id === void 0) { id = 1; }
+        if (!this.checkValidPollId(id)) {
+            return;
+        }
+        return of_1.of(mock_poll_1.POLL);
     };
-    UserService.prototype.getOtherUser = function (id) {
-        return of_1.of(mock_other_user_1.OTHER_USER);
+    PollService.prototype.newPoll = function () {
+        // TODO: create this logic
     };
-    UserService.prototype.signIn = function () {
-        this.user = mock_user_1.USER;
-        return of_1.of(mock_user_1.USER);
+    PollService.prototype.editPoll = function () {
+        // TODO: create this logic
     };
-    UserService = __decorate([
+    PollService.prototype.deletePoll = function () {
+        // TODO: create this logic
+    };
+    PollService = __decorate([
         core_1.Injectable(),
         __metadata("design:paramtypes", [])
-    ], UserService);
-    return UserService;
+    ], PollService);
+    return PollService;
 }());
-exports.UserService = UserService;
-//# sourceMappingURL=user.service.js.map
+exports.PollService = PollService;
+//# sourceMappingURL=poll.service.js.map

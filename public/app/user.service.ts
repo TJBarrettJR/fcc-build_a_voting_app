@@ -4,6 +4,7 @@ import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
 
 import { USER } from './mock-user';
+import { OTHER_USER } from './mock-other-user';
 
 @Injectable()
 export class UserService {
@@ -17,6 +18,10 @@ export class UserService {
   
   getUser(): User {
     return this.user;
+  }
+  
+  getOtherUser(id: number): Observable<User> {
+    return of(OTHER_USER);
   }
   
   signIn(): Observable<User> {
