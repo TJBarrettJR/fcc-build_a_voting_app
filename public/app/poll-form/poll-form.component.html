@@ -11,7 +11,6 @@
       <br>
       <div class="form-group">
         <label for="options">Options: </label>
-        <div id="need-more-options" class="invalid-feedback">Please enter two or more options.</div>
         <ul id="choices" class="list-group" *ngIf='poll.options'>
           <li *ngFor="let option of poll.options; let i=index" class="list-group-item" id="{{i}}">{{option.text}}
             <button type="button" class="close float-right ml-4" aria-label="remove" (click)="removeOption(i)">
@@ -19,6 +18,8 @@
             </button>
             <span *ngIf="!newPoll" class="badge badge-pill badge-info float-right">Votes: {{option.voteCount}}</span>
           </li>
+          <li *ngIf="!poll.options.length" class="list-group-item">No options currently entered.</li>
+          <div id="need-more-options" class="invalid-feedback">Please enter two or more options.</div>
         </ul>
       </div>
       <br>
@@ -30,11 +31,12 @@
               <span class="octicon octicon-plus"></span>
             </button>
           </div>
-          <div class="invalid-feedback">Please provide a valid option.</div>
+          <div id="empty-option" class="invalid-feedback">Please provide a valid option.</div>
+          <div id="dup-option" class="invalid-feedback">The option "{{invalidOption}}" already exists.</div>
         </div>
       </div>
     </div>
-    <button class="btn btn-primary float-right mt-3 mr-3" type="button">Save</button>
+    <button id="save-submit" class="btn btn-primary float-right mt-3 mr-3" (click)="submit()" type="button">Save</button>
     <button *ngIf="!newPoll" class="btn btn-danger float-right mt-3 mr-3" (click)="revertBeforeChanges()" type="button">Revert</button>
   </form>
 </div>

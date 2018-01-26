@@ -44,9 +44,12 @@ using [this](https://angular.io/tutorial/toh-pt4#inject-the-heroservice) to get 
   * reset vote counts when saving changes to a poll
 * On app-nav make changes to navbarDropdown indicated in comments
 * On app-nav change active area based upon routing (Stays on Home currently)
+* Adjust where JS file outputs go and may need to add html into that folder
+  * Can add to .gitignore once completed to reduce upload/download size
 * Fix OAuth2 stuff once pug is converted
+  * Maybe change how it works and allow the user to select their own values??
   * Learn more about angular and OAuth
-  * Find out how to still 'connect' when testing offline on localhost
+  * Find out how to still 'connect' when testing offline on localhost | View passportjs site
 * Finish new poll setup and send
 * Finish edit poll setup and send
   * Decide if edit resets all answers
