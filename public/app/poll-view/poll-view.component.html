@@ -12,8 +12,19 @@
   <div class="col-sm">
     <div class="container">
       <ul class="list-group">
-        
+        <li *ngFor="let option of poll.options" class="list-group-item">
+          <label class="form-check-label">
+            <input class="form-check-input" id="selection{{option.id}}" type="radio" name="selection" value="{{option.id}}">
+            <strong>{{option.text}}</strong>
+          </label>
+        </li>
       </ul>
+      <button id="submit-vote" class="btn btn-primary btn-lg float-right mt-2 mr-2">Submit</button>
+    </div>
+  </div>
+  <div class="col-sm">
+    <div class="container mr-3">
+      TODO: comments go here
     </div>
   </div>
 </div>
