@@ -2,29 +2,28 @@
   <h1>{{ poll.question }}</h1>
   <h4 class="ml-3">by {{ author.displayName }}</h4>
 </div>
-<div class="row">
-  <div class="col-sm">
-    <div class="container ml-3">
-      <h2 *ngIf="voting">Select a response!</h2>
-      <h2 *ngIf="!voting">Results:</h2>
+<div class="container">
+  <div class="row">
+    <div class="col-sm">
+      <div class="container ml-3">
+        <h2 *ngIf="voting">Select a response!</h2>
+        <h2 *ngIf="!voting">Results:</h2>
+      </div>
     </div>
-  </div>
-  <div class="col-sm">
-    <div class="container">
-      <ul class="list-group">
-        <li *ngFor="let option of poll.options" class="list-group-item">
-          <label class="form-check-label">
-            <input class="form-check-input" id="selection{{option.id}}" type="radio" name="selection" value="{{option.id}}">
+    <div class="col-sm">
+      <div class="container">
+        <div class="list-group" role="tablist">
+          <a *ngFor="let option of poll.options" id="{{option.id}}" class="list-group-item list-group-item-action" data-toggle="list" role="tab">
             <strong>{{option.text}}</strong>
-          </label>
-        </li>
-      </ul>
-      <button id="submit-vote" class="btn btn-primary btn-lg float-right mt-2 mr-2">Submit</button>
+          </a>
+        </div>
+        <button id="submit-vote" class="btn btn-primary btn-lg float-right mt-2 mr-2">Submit</button>
+      </div>
     </div>
-  </div>
-  <div class="col-sm">
-    <div class="container mr-3">
-      TODO: comments go here
+    <div class="col-sm">
+      <div class="container mr-3">
+        TODO: comments go here
+      </div>
     </div>
   </div>
 </div>
