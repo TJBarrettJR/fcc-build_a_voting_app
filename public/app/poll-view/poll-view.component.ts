@@ -1,10 +1,12 @@
 import { Component, OnInit, AfterViewChecked } from '@angular/core';
 import { User } from '../user';
 import { Poll } from '../poll';
+import { Comment } from '../comment';
 
 import { UserService } from '../user.service';
 import { PollService } from '../poll.service';
-import { POLL } from '../mock-poll';
+import { VoteService } from '../vote.service';
+import { CommentService } from '../comment.service';
 
 @Component({
   selector: 'poll-view',
@@ -18,10 +20,13 @@ export class PollView implements OnInit, AfterViewChecked {
   author: User;
   voting: boolean;
   userVote: number;
+  comments: Comment[];
   
   constructor(
     private userService: UserService,
-    private pollService: PollService
+    private pollService: PollService,
+    private voteService: VoteService,
+    private commentService: CommentService
   ) { }
   
   getUser(): void {
@@ -32,14 +37,33 @@ export class PollView implements OnInit, AfterViewChecked {
   getAuthor(id: number): void {
     this.userService.getOtherUser(id).subscribe(author => this.author = author);
   }
+
+  getComments(id: number): void {
+    this.commentService.getComments(id).subscribe(comments => this.comments = comments);
+  }
   
   getPoll(id: number): void {
     this.pollService.getPoll(id).subscribe(poll => { 
       this.poll = poll;
       this.getAuthor(this.poll.userId);
+      this.getComments(this.poll.id);
       this.voting = true; // This should get if the person voted and if so what they voted for
       this.userVote = -1; // set to -1 if not voted
     });
+  }
+
+  submitComment(): void {
+    let commentText = <HTMLTextAreaElement>document.getElementById("new-comment-text");
+    let noText = document.getElementById("no-text");
+    if (commentText.value) {
+      let nextId = this.comments.reduce((max, comment) => {return max.id > comment.id ? max : comment}).id + 1;
+      let newComment: Comment = {id: ++nextId, text: commentText.value, pollId: this.poll.id, user: this.user.displayName};
+      this.comments.push(newComment);
+      commentText.value = "";
+      noText.style.display = "none";
+    } else {
+      noText.style.display = "block";
+    }
   }
   
   submitVote(): void {

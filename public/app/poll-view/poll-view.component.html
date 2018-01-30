@@ -23,8 +23,21 @@
       </div>
     </div>
     <div class="col-sm">
-      <div class="container mr-3">
-        TODO: comments go here
+      <div id="comment-area" class="container mr-3">
+        <ul id="comments" class="list-group">
+          <li *ngFor="let comment of comments" class="list-group-item" id="{{comment.id}}">
+            <p>{{comment.text}}</p>
+            <h6>by {{comment.user}}</h6>
+          </li>
+        </ul>
+        <form class="mt-2 mb-4">
+          <div class="form-group">
+            <label>Add a new comment</label>
+            <textarea id="new-comment-text" class="form-control" rows="3" placeholder="Enter your comment here."></textarea>
+            <button id="new-comment-submit" class=" btn btn-primary mt-2 mr-1 float-right" type="submit" (click)="submitComment()">Submit</button>
+            <div id="no-text" class="invalid-feedback">You must enter text to add a comment!</div>
+          </div>
+        </form>
       </div>
     </div>
   </div>

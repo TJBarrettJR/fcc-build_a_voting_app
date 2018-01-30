@@ -19,6 +19,7 @@ var poll_view_component_1 = require("./poll-view/poll-view.component");
 var user_service_1 = require("./user.service");
 var poll_service_1 = require("./poll.service");
 var vote_service_1 = require("./vote.service");
+var comment_service_1 = require("./comment.service");
 var app_routing_module_1 = require("./app-routing.module");
 var AppModule = /** @class */ (function () {
     function AppModule() {
@@ -42,7 +43,8 @@ var AppModule = /** @class */ (function () {
             providers: [
                 user_service_1.UserService,
                 poll_service_1.PollService,
-                vote_service_1.VoteService
+                vote_service_1.VoteService,
+                comment_service_1.CommentService
             ],
             bootstrap: [app_component_1.AppComponent]
         })

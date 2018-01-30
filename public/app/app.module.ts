@@ -13,6 +13,7 @@ import { PollView } from './poll-view/poll-view.component';
 import { UserService } from './user.service';
 import { PollService } from './poll.service';
 import { VoteService } from './vote.service';
+import { CommentService } from './comment.service';
 
 import { AppRoutingModule } from './app-routing.module';
 
@@ -34,7 +35,8 @@ import { AppRoutingModule } from './app-routing.module';
   providers: [ 
     UserService,
     PollService,
-    VoteService
+    VoteService,
+    CommentService
   ],
   bootstrap:    [ AppComponent ]
 })

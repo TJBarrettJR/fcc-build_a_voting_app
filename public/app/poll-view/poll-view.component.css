@@ -1,0 +1,16 @@
+#comments {
+    margin-top: 15px;
+    margin-bottom: 30px;
+}
+
+#comment-area {
+    margin-bottom: 80px;
+}
+
+@media (min-width: 768px) {
+    #comments {
+        overflow-y: scroll;
+        margin-top: 0;
+        max-height: 300px;
+    }
+}

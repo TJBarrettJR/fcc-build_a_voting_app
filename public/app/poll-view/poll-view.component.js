@@ -12,10 +12,14 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var user_service_1 = require("../user.service");
 var poll_service_1 = require("../poll.service");
+var vote_service_1 = require("../vote.service");
+var comment_service_1 = require("../comment.service");
 var PollView = /** @class */ (function () {
-    function PollView(userService, pollService) {
+    function PollView(userService, pollService, voteService, commentService) {
         this.userService = userService;
         this.pollService = pollService;
+        this.voteService = voteService;
+        this.commentService = commentService;
     }
     PollView.prototype.getUser = function () {
         this.user = this.userService.getUser();
@@ -25,14 +29,33 @@ var PollView = /** @class */ (function () {
         var _this = this;
         this.userService.getOtherUser(id).subscribe(function (author) { return _this.author = author; });
     };
+    PollView.prototype.getComments = function (id) {
+        var _this = this;
+        this.commentService.getComments(id).subscribe(function (comments) { return _this.comments = comments; });
+    };
     PollView.prototype.getPoll = function (id) {
         var _this = this;
         this.pollService.getPoll(id).subscribe(function (poll) {
             _this.poll = poll;
             _this.getAuthor(_this.poll.userId);
+            _this.getComments(_this.poll.id);
             _this.voting = true; // This should get if the person voted and if so what they voted for
             _this.userVote = -1; // set to -1 if not voted
         });
+    };
+    PollView.prototype.submitComment = function () {
+        var commentText = document.getElementById("new-comment-text");
+        var noText = document.getElementById("no-text");
+        if (commentText.value) {
+            var nextId = this.comments.reduce(function (max, comment) { return max.id > comment.id ? max : comment; }).id + 1;
+            var newComment = { id: ++nextId, text: commentText.value, pollId: this.poll.id, user: this.user.displayName };
+            this.comments.push(newComment);
+            commentText.value = "";
+            noText.style.display = "none";
+        }
+        else {
+            noText.style.display = "block";
+        }
     };
     PollView.prototype.submitVote = function () {
         for (var count = 0; count < this.poll.options.length; count++) {
@@ -79,7 +102,9 @@ var PollView = /** @class */ (function () {
             styleUrls: ['./poll-view.component.css']
         }),
         __metadata("design:paramtypes", [user_service_1.UserService,
-            poll_service_1.PollService])
+            poll_service_1.PollService,
+            vote_service_1.VoteService,
+            comment_service_1.CommentService])
     ], PollView);
     return PollView;
 }());

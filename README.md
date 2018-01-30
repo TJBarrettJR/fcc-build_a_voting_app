@@ -76,6 +76,9 @@ using [this](https://angular.io/tutorial/toh-pt4#inject-the-heroservice) to get 
           * users not yet registered will need the new phrase
 * Finish poll-form for new poll and edit poll
   * reset vote counts when saving changes to a poll
+* Adjust poll-view
+  * Add userId to comment model
+  * Adjust html to check for userId instead of displayName
 * On app-nav make changes to navbarDropdown indicated in comments
 * On app-nav change active area based upon routing (Stays on Home currently)
 * Fix user-info
