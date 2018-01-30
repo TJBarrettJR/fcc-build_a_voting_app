@@ -7,7 +7,7 @@
     <div class="col-sm">
       <div class="container ml-3">
         <h2 *ngIf="voting">Select a response!</h2>
-        <h2 *ngIf="!voting">Results:</h2>
+        <h2 *ngIf="!voting">Results</h2>
       </div>
     </div>
     <div class="col-sm">
@@ -15,9 +15,11 @@
         <div class="list-group" role="tablist">
           <a *ngFor="let option of poll.options" id="{{option.id}}" class="list-group-item list-group-item-action" data-toggle="list" role="tab">
             <strong>{{option.text}}</strong>
+            <span *ngIf="!voting" class="badge badge-pill badge-info float-right">{{option.voteCount}}</span>
           </a>
         </div>
-        <button id="submit-vote" class="btn btn-primary btn-lg float-right mt-2 mr-2">Submit</button>
+        <button *ngIf="voting" id="submit-vote" class="btn btn-primary btn-lg float-right mt-2 mr-2" (click)="submitVote()">Submit</button>
+        <div id="no-vote" class="invalid-feedback">Please select an option to vote!</div>
       </div>
     </div>
     <div class="col-sm">

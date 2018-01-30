@@ -16,7 +16,6 @@ var PollView = /** @class */ (function () {
     function PollView(userService, pollService) {
         this.userService = userService;
         this.pollService = pollService;
-        this.voting = true;
     }
     PollView.prototype.getUser = function () {
         this.user = this.userService.getUser();
@@ -28,12 +27,50 @@ var PollView = /** @class */ (function () {
     };
     PollView.prototype.getPoll = function (id) {
         var _this = this;
-        this.pollService.getPoll(id).subscribe(function (poll) { return _this.poll = poll; });
+        this.pollService.getPoll(id).subscribe(function (poll) {
+            _this.poll = poll;
+            _this.getAuthor(_this.poll.userId);
+            _this.voting = true; // This should get if the person voted and if so what they voted for
+            _this.userVote = -1; // set to -1 if not voted
+        });
+    };
+    PollView.prototype.submitVote = function () {
+        for (var count = 0; count < this.poll.options.length; count++) {
+            var currElem = document.getElementById(count + ""); // TODO: will need to create record of the users vote
+            if (currElem.classList.contains("active")) {
+                this.userVote = count;
+                this.poll.options[count].voteCount++;
+                this.voting = false;
+            }
+        }
+        var noVote = document.getElementById("no-vote");
+        if (this.userVote === -1) {
+            noVote.style.display = "block";
+        }
+        else {
+            noVote.style.display = "none";
+        }
+    };
+    PollView.prototype.setUserVote = function () {
+        if (this.userVote !== -1) {
+            var selectionElem = document.getElementById(this.userVote + "");
+            selectionElem.classList.add("active");
+            selectionElem.classList.add("show");
+        }
+        else {
+            for (var count = 0; count < this.poll.options.length; count++) {
+                var selectElem = document.getElementById(count + "");
+                selectElem.classList.remove("active");
+                selectElem.classList.remove("show");
+            }
+        }
+    };
+    PollView.prototype.ngAfterViewChecked = function () {
+        this.setUserVote();
     };
     PollView.prototype.ngOnInit = function () {
         this.getUser();
         this.getPoll(1); // TODO: get this to be dynamic by route
-        this.getAuthor(this.poll.userId); // TODO: this might not come back in time??
     };
     PollView = __decorate([
         core_1.Component({
